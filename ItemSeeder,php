@@ -1,0 +1,31 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\Item;
+use App\Models\Category;
+
+class ItemSeeder extends Seeder
+{
+    public function run()
+    {
+        $category = Category::first(); // ambil kategori pertama sebagai contoh
+
+        if ($category) {
+            Item::create([
+                'name' => 'Multimeter',
+                'description' => 'Alat ukur listrik',
+                'stock' => 5,
+                'category_id' => $category->id,
+            ]);
+
+            Item::create([
+                'name' => 'Soldering Iron',
+                'description' => 'Alat penyolderan',
+                'stock' => 3,
+                'category_id' => $category->id,
+            ]);
+        }
+    }
+}
